@@ -1,0 +1,1039 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Dauphiné Moto, atelier de réparation moto à Grenoble (Sassenage)</title>
+<meta name="description" content="Dauphiné Moto, atelier de réparation moto à Sassenage, près de Grenoble. Diagnostic, entretien et réparation sur rendez-vous, du lundi au samedi.">
+<meta property="og:title" content="Dauphiné Moto, atelier de réparation moto à Sassenage">
+<meta property="og:description" content="Mécanique moto sur rendez-vous, rue de la Sûre à Sassenage. Noté 5,0 sur 15 avis Google.">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="fr_FR">
+<meta name="theme-color" content="#B4441A">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cpath d='M32 3l25.1 14.5v29L32 61 6.9 46.5v-29z' fill='%23B4441A'/%3E%3Ccircle cx='32' cy='32' r='11' fill='%23161310'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@100,400;100,600;125,800&family=IBM+Plex+Mono:wght@500&display=swap">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "MotorcycleRepair",
+  "name": "Dauphiné Moto",
+  "telephone": "+33609682495",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "Rue de la Sûre",
+    "postalCode": "38600",
+    "addressLocality": "Sassenage",
+    "addressCountry": "FR"
+  },
+  "geo": { "@type": "GeoCoordinates", "latitude": 45.2048288, "longitude": 5.6846158 },
+  "hasMap": "https://www.google.com/maps/place/?q=place_id:ChIJOzAgKqXzikcRYdwqapalAeI",
+  "foundingDate": "2001-03-31",
+  "paymentAccepted": "Carte de crédit",
+  "openingHoursSpecification": [
+    { "@type": "OpeningHoursSpecification", "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"], "opens": "08:00", "closes": "12:00" },
+    { "@type": "OpeningHoursSpecification", "dayOfWeek": "Saturday", "opens": "09:00", "closes": "12:00" },
+    { "@type": "OpeningHoursSpecification", "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"], "opens": "14:00", "closes": "19:00" }
+  ]
+}
+</script>
+<style>
+/* ==========================================================================
+   DAUPHINÉ MOTO — design decisions
+   Palette  Pulled from the two workshop photos: the oil-black bench (--oil),
+            warm concrete and window light (--bg), rust on the bolts and pipes
+            as the brand colour, the yellow ignition wire as a tiny accent for
+            stars only. One strong colour move: the reviews sit on a full rust field.
+   Type     Archivo Expanded 800 for display: wide, mechanical, race-number
+            feel. Archivo 400/600 for reading. IBM Plex Mono 500 for the
+            "bon d'intervention" labels, hours and section numbers.
+   Hero     Typographic poster on oil-black. Only two usable photos (photo-03
+            duplicates photo-02), so type leads; a flywheel drawn in SVG (echo
+            of photo-02) turns slowly behind the headline, photo-01 (hands at the
+            bench) is framed beside it on a rust offset block.
+   Rhythm   dark hero → rust proof → paper workshop (asymmetric photo/steps,
+            outlined "2001") → light hours + map → dark contact with an
+            oversized phone number → paper footer. Sections numbered 01–04.
+   ========================================================================== */
+:root {
+  --bg: #F2EEE7;
+  --surface: #FBF9F5;
+  --ink: #1B1815;
+  --ink-soft: #5B544C;
+  --brand: #B4441A;
+  --brand-ink: #FFFFFF;
+  --brand-deep: #963612;
+  --brand-hi: #EE7445;
+  --accent: #E9B949;
+  --line: rgba(27, 24, 21, .14);
+  --oil: #161310;
+  --oil-2: #211D19;
+  --on-oil: #F2EEE7;
+  --on-oil-soft: #B9B0A5;
+  --line-oil: rgba(242, 238, 231, .16);
+  --on-brand-soft: #FCE9DF;
+  --ok: #6BC487;
+
+  --font-display: "Archivo", "Arial Black", "Helvetica Neue", Arial, sans-serif;
+  --font-text: "Archivo", system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
+
+  --step--1: clamp(0.875rem, 0.85rem + 0.12vw, 0.9375rem);
+  --step-0: clamp(1rem, 0.96rem + 0.2vw, 1.125rem);
+  --step-1: clamp(1.125rem, 1.05rem + 0.4vw, 1.375rem);
+  --step-2: clamp(1.3rem, 1.15rem + 0.75vw, 1.75rem);
+  --step-3: clamp(1.6rem, 1.3rem + 1.4vw, 2.5rem);
+  --step-4: clamp(1.9rem, 1.35rem + 2.6vw, 3.75rem);
+  --step-5: clamp(2.15rem, 1.2rem + 4vw, 4.75rem);
+  --step-mega: clamp(6.5rem, 3rem + 17vw, 15rem);
+
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 24px;
+  --space-6: 32px;
+  --space-7: 48px;
+  --space-8: 64px;
+  --space-9: 96px;
+  --section: clamp(56px, 10vw, 128px);
+  --gutter: clamp(16px, 5vw, 40px);
+  --container: 1200px;
+  --header-h: 64px;
+  --bar-h: 62px;
+
+  --r-1: 8px;
+  --r-2: 16px;
+  --r-3: 999px;
+  --shadow-1: 0 1px 2px rgba(22, 19, 16, .10), 0 2px 6px rgba(22, 19, 16, .06);
+  --shadow-2: 0 2px 4px rgba(22, 19, 16, .06), 0 14px 30px -10px rgba(22, 19, 16, .28);
+  --shadow-3: 0 6px 12px rgba(0, 0, 0, .18), 0 40px 70px -24px rgba(0, 0, 0, .6);
+
+  --ease: cubic-bezier(.2, .7, .2, 1);
+  --dur-1: 200ms;
+  --dur-2: 450ms;
+  --dur-3: 700ms;
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; scroll-behavior: smooth; }
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--font-text);
+  font-size: var(--step-0);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  padding-bottom: calc(var(--bar-h) + env(safe-area-inset-bottom));
+}
+body.no-scroll { overflow: hidden; }
+img { display: block; max-width: 100%; height: auto; }
+a { color: inherit; }
+p { margin: 0; text-wrap: pretty; }
+h1, h2, h3 { margin: 0; text-wrap: balance; }
+h1, h2 {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-stretch: 125%;
+  line-height: 1.04;
+  letter-spacing: -0.025em;
+}
+h3 { font-family: var(--font-text); font-weight: 600; line-height: 1.2; letter-spacing: -0.01em; }
+ul, ol { margin: 0; padding: 0; list-style: none; }
+blockquote, figure { margin: 0; }
+address { font-style: normal; }
+[id] { scroll-margin-top: calc(var(--header-h) + 16px); }
+:focus-visible { outline: 3px solid var(--accent); outline-offset: 3px; border-radius: 4px; }
+.sr-only {
+  position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px;
+  overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0;
+}
+.container { width: min(100% - 2 * var(--gutter), var(--container)); margin-inline: auto; }
+.ic {
+  width: 20px; height: 20px; flex: none;
+  fill: none; stroke: currentColor; stroke-width: 1.75; stroke-linecap: round; stroke-linejoin: round;
+}
+
+.skip {
+  position: absolute; left: var(--space-4); top: var(--space-3); z-index: 100;
+  display: inline-flex; align-items: center; min-height: 44px; padding: 0 var(--space-4);
+  background: var(--accent); color: var(--oil); font-weight: 600; text-decoration: none;
+  border-radius: var(--r-1); transform: translateY(-160%);
+  transition: transform var(--dur-1) var(--ease);
+}
+.skip:focus { transform: none; }
+
+/* ---------- labels ---------- */
+.label {
+  display: flex; align-items: center; gap: var(--space-3);
+  font-family: var(--font-mono); font-weight: 500; font-size: var(--step--1);
+  letter-spacing: .06em; text-transform: uppercase; color: var(--ink-soft);
+}
+.label::before { content: ""; width: 28px; height: 2px; background: currentColor; flex: none; }
+.label b { font-weight: 500; color: var(--brand); }
+
+/* ---------- buttons ---------- */
+.btn {
+  display: inline-flex; align-items: center; justify-content: center; gap: 10px;
+  min-height: 52px; padding: 0 22px; border-radius: var(--r-1);
+  font-family: var(--font-text); font-weight: 600; font-size: 1rem; line-height: 1.1;
+  text-decoration: none; border: 1.5px solid transparent; cursor: pointer;
+  transition: transform var(--dur-1) var(--ease), background-color var(--dur-1) var(--ease), border-color var(--dur-1) var(--ease);
+}
+.btn:active { transform: translateY(1px); }
+.btn-brand { background: var(--brand); color: var(--brand-ink); box-shadow: var(--shadow-1); }
+.btn-brand:hover { background: var(--brand-deep); }
+.btn-line { border-color: var(--line-oil); color: var(--on-oil); }
+.btn-line:hover { border-color: var(--on-oil); }
+.btn-ink { border-color: var(--ink); color: var(--ink); }
+.btn-ink:hover { background: var(--ink); color: var(--bg); }
+
+/* ---------- header ---------- */
+.site-header {
+  position: sticky; top: 0; z-index: 50;
+  background: var(--oil); color: var(--on-oil);
+  border-bottom: 1px solid var(--line-oil);
+}
+.header-inner { display: flex; align-items: center; gap: var(--space-3); height: var(--header-h); }
+.wordmark {
+  display: inline-flex; align-items: center; gap: 10px; min-height: 44px;
+  margin-right: auto; text-decoration: none;
+}
+.nut { width: 30px; height: 30px; flex: none; }
+.wordmark-text {
+  font-family: var(--font-display); font-weight: 800; font-stretch: 125%;
+  font-size: 1rem; line-height: 1; letter-spacing: .01em; text-transform: uppercase;
+}
+.wordmark-text span { color: var(--brand-hi); }
+.burger {
+  display: inline-grid; place-items: center; width: 48px; height: 48px;
+  background: none; border: 1px solid var(--line-oil); border-radius: var(--r-1);
+  color: var(--on-oil); cursor: pointer;
+}
+.burger .ic { width: 24px; height: 24px; }
+.burger .i-close { display: none; }
+.burger[aria-expanded="true"] .i-menu { display: none; }
+.burger[aria-expanded="true"] .i-close { display: block; }
+.header-cta { display: none; min-height: 44px; padding: 0 16px; font-size: .95rem; }
+
+.nav {
+  position: fixed; left: 0; right: 0; top: var(--header-h); bottom: 0; z-index: 49;
+  display: flex; flex-direction: column; justify-content: space-between; gap: var(--space-7);
+  padding: var(--space-5) var(--gutter) calc(var(--space-6) + env(safe-area-inset-bottom));
+  background: var(--oil); overflow-y: auto;
+  opacity: 0; visibility: hidden; transform: translateY(-8px);
+  transition: opacity var(--dur-1) var(--ease), transform var(--dur-2) var(--ease), visibility 0s linear var(--dur-2);
+}
+.nav.is-open { opacity: 1; visibility: visible; transform: none; transition-delay: 0s; }
+.nav-list a {
+  display: flex; align-items: baseline; gap: var(--space-4); min-height: 68px; padding-top: 18px;
+  border-bottom: 1px solid var(--line-oil); text-decoration: none;
+  font-family: var(--font-display); font-weight: 800; font-stretch: 125%;
+  font-size: var(--step-3); letter-spacing: -0.02em; line-height: 1.1;
+}
+.nav-list .n { font-family: var(--font-mono); font-weight: 500; font-size: var(--step--1); color: var(--brand-hi); letter-spacing: 0; }
+.nav-extra { display: grid; gap: var(--space-3); color: var(--on-oil-soft); }
+.nav-extra .btn { width: 100%; }
+
+/* ---------- hero ---------- */
+.hero {
+  position: relative; overflow: hidden; overflow: clip;
+  background: var(--oil); color: var(--on-oil);
+  padding: var(--space-7) 0 var(--section);
+}
+.flywheel {
+  position: absolute; z-index: 0; pointer-events: none;
+  width: 560px; height: 560px; right: -300px; top: -120px;
+  color: rgba(242, 238, 231, .085);
+  animation: spin 160s linear infinite;
+}
+@keyframes spin { to { transform: rotate(360deg); } }
+.hero-grid { position: relative; z-index: 1; display: grid; gap: var(--space-7); align-items: center; }
+.eyebrow {
+  display: flex; align-items: center; gap: var(--space-3);
+  font-family: var(--font-mono); font-weight: 500; font-size: var(--step--1);
+  letter-spacing: .06em; text-transform: uppercase; color: var(--on-oil-soft);
+}
+.eyebrow::before { content: ""; width: 28px; height: 2px; background: var(--brand-hi); flex: none; }
+.hero h1 { font-size: var(--step-5); margin-top: var(--space-5); line-height: 1.02; }
+.hero h1 em { font-style: normal; color: var(--brand-hi); }
+.hero-lead { margin-top: var(--space-5); max-width: 44ch; color: var(--on-oil-soft); }
+.hero-lead strong { color: var(--on-oil); font-weight: 600; }
+.hero-meta { display: flex; flex-wrap: wrap; gap: var(--space-2) var(--space-3); margin-top: var(--space-5); }
+.chip {
+  display: inline-flex; align-items: center; gap: 8px; min-height: 44px; padding: 0 16px 0 14px;
+  border: 1px solid var(--line-oil); border-radius: var(--r-3);
+  background: rgba(242, 238, 231, .04);
+  font-weight: 600; font-size: .95rem; text-decoration: none; white-space: nowrap;
+  transition: border-color var(--dur-1) var(--ease);
+}
+.chip:hover { border-color: var(--on-oil); }
+.chip .star { width: 16px; height: 16px; color: var(--accent); }
+.chip .sep { color: var(--on-oil-soft); font-weight: 400; }
+.status {
+  display: inline-flex; align-items: center; gap: 10px; min-height: 44px; padding: 0 16px;
+  border-radius: var(--r-3); font-weight: 600; font-size: .95rem; white-space: nowrap;
+  border: 1px solid var(--line-oil);
+}
+.status[hidden] { display: none; }
+.status::before {
+  content: ""; width: 9px; height: 9px; border-radius: 50%; background: var(--brand-hi); flex: none;
+  box-shadow: 0 0 0 4px rgba(238, 116, 69, .18);
+}
+.status.is-open::before { background: var(--ok); box-shadow: 0 0 0 4px rgba(107, 196, 135, .2); }
+.hero-cta { display: flex; flex-wrap: wrap; gap: var(--space-3); margin-top: var(--space-6); }
+.hero-cta .btn { flex: 1 1 auto; padding: 0 14px; gap: 8px; font-size: .95rem; white-space: nowrap; }
+.hero-note { margin-top: var(--space-4); font-family: var(--font-mono); font-weight: 500; font-size: var(--step--1); color: var(--on-oil-soft); }
+.hero-figure { position: relative; margin-right: 14px; }
+.frame { position: relative; }
+.frame::before {
+  content: ""; position: absolute; inset: 0; border-radius: var(--r-2);
+  background: var(--brand); transform: translate(14px, 14px);
+}
+.hero-figure img {
+  position: relative; width: 100%; aspect-ratio: 4 / 3; object-fit: cover; object-position: 20% 50%;
+  border-radius: var(--r-2); box-shadow: var(--shadow-3);
+}
+.hero-figure figcaption {
+  position: relative; margin-top: calc(var(--space-4) + 14px);
+  font-family: var(--font-mono); font-weight: 500; font-size: var(--step--1); color: var(--on-oil-soft);
+}
+.hero-copy > * { animation: rise var(--dur-3) var(--ease) both; }
+.hero-copy > :nth-child(2) { animation-delay: 60ms; }
+.hero-copy > :nth-child(3) { animation-delay: 120ms; }
+.hero-copy > :nth-child(4) { animation-delay: 180ms; }
+.hero-copy > :nth-child(n+5) { animation-delay: 240ms; }
+@keyframes rise { from { opacity: 0; transform: translateY(16px); } }
+
+/* ---------- proof (rust field) ---------- */
+.proof { background: var(--brand); color: var(--brand-ink); padding-block: var(--section); overflow: hidden; }
+.proof .label, .proof .label b { color: var(--on-brand-soft); }
+.proof-head { display: grid; gap: var(--space-6); }
+.score { display: flex; align-items: flex-end; gap: var(--space-5); flex-wrap: wrap; margin-top: var(--space-5); }
+.score-num {
+  font-family: var(--font-display); font-weight: 800; font-stretch: 125%;
+  font-size: var(--step-mega); line-height: .8; letter-spacing: -0.05em;
+}
+.score-side { display: grid; gap: var(--space-2); padding-bottom: 6px; }
+.stars { display: inline-flex; gap: 3px; }
+.stars .ic { width: 22px; height: 22px; }
+.score-side p { color: var(--on-brand-soft); }
+.score-side strong { color: var(--brand-ink); }
+.proof h2 { font-size: var(--step-4); max-width: 16ch; }
+.proof-intro { margin-top: var(--space-4); max-width: 46ch; color: var(--on-brand-soft); font-size: var(--step-1); line-height: 1.5; }
+.proof-intro cite { font-style: normal; color: var(--brand-ink); font-weight: 600; }
+
+.rail {
+  margin-top: var(--space-7);
+  overflow-x: auto; scroll-snap-type: x mandatory; overscroll-behavior-x: contain;
+  scroll-padding-inline: max(var(--gutter), calc((100% - var(--container)) / 2));
+  scrollbar-width: none;
+}
+.rail::-webkit-scrollbar { display: none; }
+.rail:focus-visible { outline-offset: -3px; }
+.rail-track {
+  display: flex; gap: var(--space-4); width: max-content;
+  padding: var(--space-2) max(var(--gutter), calc((100vw - var(--container)) / 2)) var(--space-4);
+}
+.review {
+  flex: 0 0 min(84vw, 400px); scroll-snap-align: start;
+  display: flex; flex-direction: column; gap: var(--space-4);
+  padding: var(--space-6) var(--space-5) var(--space-5);
+  background: var(--surface); color: var(--ink);
+  border-radius: var(--r-2); box-shadow: var(--shadow-2);
+}
+.review .stars { color: var(--brand); }
+.review .stars .ic { width: 18px; height: 18px; }
+.review blockquote { flex: 1; font-size: var(--step-1); line-height: 1.5; }
+.review blockquote p::before { content: "« "; color: var(--brand); }
+.review blockquote p::after { content: " »"; color: var(--brand); }
+.review-by {
+  display: flex; justify-content: space-between; align-items: baseline; gap: var(--space-3);
+  padding-top: var(--space-4); border-top: 1px solid var(--line);
+}
+.review .author { font-weight: 600; }
+.review .date { font-family: var(--font-mono); font-weight: 500; font-size: var(--step--1); color: var(--ink-soft); }
+.proof-foot { display: flex; align-items: center; justify-content: space-between; gap: var(--space-4); flex-wrap: wrap; margin-top: var(--space-5); }
+.link-arrow {
+  display: inline-flex; align-items: center; gap: 10px; min-height: 44px;
+  font-weight: 600; text-decoration: underline; text-decoration-thickness: 1.5px; text-underline-offset: 5px;
+}
+.link-arrow .ic { transition: transform var(--dur-1) var(--ease); }
+.link-arrow:hover .ic { transform: translate(2px, -2px); }
+.rail-nav { display: flex; gap: var(--space-2); }
+.rail-btn {
+  display: inline-grid; place-items: center; width: 48px; height: 48px;
+  border-radius: 50%; border: 1.5px solid rgba(255, 255, 255, .6); background: none;
+  color: var(--brand-ink); cursor: pointer;
+  transition: background-color var(--dur-1) var(--ease), opacity var(--dur-1) var(--ease);
+}
+.rail-btn:hover:not(:disabled) { background: rgba(255, 255, 255, .14); }
+.rail-btn:disabled { opacity: .4; cursor: default; }
+.rail-btn[data-dir="-1"] .ic { transform: rotate(180deg); }
+
+/* ---------- atelier ---------- */
+.atelier { padding-block: var(--section); }
+.atelier-grid { display: grid; gap: var(--space-7); grid-template-areas: "head" "photo" "steps"; }
+.atelier-head { grid-area: head; }
+.atelier-photo { grid-area: photo; }
+.steps { grid-area: steps; border-top: 2px solid var(--ink); }
+.atelier h2 { font-size: var(--step-4); margin-top: var(--space-5); }
+.atelier-lead { margin-top: var(--space-5); max-width: 60ch; color: var(--ink-soft); font-size: var(--step-1); line-height: 1.55; }
+.atelier-photo img {
+  width: 100%; aspect-ratio: 4 / 5; object-fit: cover; object-position: 50% 55%;
+  border-radius: var(--r-2); box-shadow: var(--shadow-2);
+}
+.atelier-photo figcaption { margin-top: var(--space-3); font-family: var(--font-mono); font-weight: 500; font-size: var(--step--1); color: var(--ink-soft); }
+.step {
+  display: grid; grid-template-columns: 2.25rem minmax(0, 1fr); gap: var(--space-2) var(--space-3);
+  padding-block: var(--space-6); border-bottom: 1px solid var(--line);
+}
+.step-n { font-family: var(--font-mono); font-weight: 500; font-size: var(--step--1); color: var(--brand); padding-top: .4em; }
+.step h3 { font-size: var(--step-2); }
+.step p { margin-top: var(--space-2); color: var(--ink-soft); max-width: 60ch; }
+.step blockquote { margin-top: var(--space-4); padding-left: var(--space-4); border-left: 2px solid var(--brand); }
+.step blockquote p { margin: 0; color: var(--ink); font-style: italic; }
+.step blockquote cite { display: block; margin-top: 2px; font-style: normal; font-family: var(--font-mono); font-weight: 500; font-size: var(--step--1); color: var(--ink-soft); }
+
+.since {
+  display: grid; gap: var(--space-6); margin-top: var(--section);
+  padding-top: var(--space-7); border-top: 1px solid var(--line);
+}
+.since-year {
+  font-family: var(--font-display); font-weight: 800; font-stretch: 125%;
+  font-size: clamp(5.5rem, 2.5rem + 14vw, 12rem); line-height: .8; letter-spacing: -0.05em;
+  color: transparent; -webkit-text-stroke: 2px var(--ink);
+}
+.since h3 { font-size: var(--step-3); font-family: var(--font-display); font-weight: 800; font-stretch: 125%; letter-spacing: -0.02em; line-height: 1.05; }
+.since-text p { margin-top: var(--space-3); max-width: 52ch; color: var(--ink-soft); }
+.facts { display: grid; gap: 0; border-top: 1px solid var(--line); }
+.facts li { display: flex; gap: var(--space-4); align-items: flex-start; padding-block: var(--space-4); border-bottom: 1px solid var(--line); }
+.facts .ic { color: var(--brand); margin-top: 3px; }
+.facts strong { display: block; font-weight: 600; }
+.facts span { color: var(--ink-soft); }
+
+/* ---------- visit: hours + map ---------- */
+.visit { background: var(--surface); padding-block: var(--section); border-top: 1px solid var(--line); }
+.visit-grid { display: grid; gap: var(--space-8); }
+.visit h2 { font-size: var(--step-4); margin-top: var(--space-5); }
+.visit .status { margin-top: var(--space-5); border-color: var(--line); color: var(--ink); background: var(--bg); }
+.visit .status::before { background: var(--brand); box-shadow: 0 0 0 4px rgba(180, 68, 26, .15); }
+.visit .status.is-open::before { background: #2E8B57; box-shadow: 0 0 0 4px rgba(46, 139, 87, .18); }
+.hours { width: 100%; margin-top: var(--space-6); border-collapse: collapse; font-variant-numeric: tabular-nums; }
+.hours thead th {
+  padding: 0 8px 10px; text-align: left; font-family: var(--font-mono); font-weight: 500;
+  font-size: var(--step--1); color: var(--ink-soft); text-transform: uppercase; letter-spacing: .06em;
+  border-bottom: 2px solid var(--ink);
+}
+.hours tbody th, .hours td { padding: 14px 8px; text-align: left; border-bottom: 1px solid var(--line); vertical-align: top; }
+.hours tbody th { font-weight: 600; }
+.hours td { font-family: var(--font-mono); font-weight: 500; font-size: .95rem; white-space: nowrap; }
+.hours .closed { color: var(--ink-soft); }
+.hours tr.is-today { background: rgba(180, 68, 26, .08); }
+.hours tr.is-today th { box-shadow: inset 3px 0 0 var(--brand); }
+.today-tag {
+  display: block; margin-top: 2px; font-family: var(--font-mono); font-weight: 500;
+  font-size: .75rem; letter-spacing: .06em; text-transform: uppercase; color: var(--brand);
+}
+.hours-note { margin-top: var(--space-5); color: var(--ink-soft); max-width: 48ch; }
+.map {
+  position: relative; aspect-ratio: 4 / 3; border-radius: var(--r-2); overflow: hidden;
+  background: var(--bg); box-shadow: var(--shadow-2); border: 1px solid var(--line);
+}
+.map iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
+.map-fallback {
+  position: absolute; inset: 0; display: grid; place-items: center; padding: var(--space-5);
+  text-align: center; font-weight: 600; color: var(--ink);
+}
+.access address { margin-top: var(--space-6); font-size: var(--step-1); line-height: 1.45; }
+.access address strong { font-family: var(--font-display); font-weight: 800; font-stretch: 125%; letter-spacing: -0.01em; }
+.access-actions { display: flex; flex-wrap: wrap; gap: var(--space-3); margin-top: var(--space-5); }
+.access-actions .btn { flex: 1 1 160px; }
+
+/* ---------- contact (oil) ---------- */
+.contact { position: relative; background: var(--oil); color: var(--on-oil); padding-block: var(--section); overflow: hidden; overflow: clip; }
+.contact .label { color: var(--on-oil-soft); }
+.contact .label::before { background: var(--brand-hi); }
+.contact .label b { color: var(--brand-hi); }
+.contact h2 { margin-top: var(--space-5); font-size: var(--step-4); max-width: 20ch; }
+.contact h2 span { color: var(--brand-hi); }
+.phone-xl {
+  display: inline-block; margin-top: var(--space-7);
+  font-family: var(--font-display); font-weight: 800; font-stretch: 125%;
+  font-size: clamp(1.75rem, 0.55rem + 5.4vw, 4.25rem); line-height: 1; letter-spacing: -0.02em;
+  text-decoration: none; padding-bottom: 10px; border-bottom: 3px solid var(--brand-hi);
+  font-variant-numeric: tabular-nums; white-space: nowrap;
+}
+.phone-xl:hover { color: var(--brand-hi); }
+.contact-actions { display: flex; flex-wrap: wrap; gap: var(--space-3); margin-top: var(--space-7); }
+.contact-actions .btn { flex: 1 1 180px; }
+.contact-note { margin-top: var(--space-5); color: var(--on-oil-soft); max-width: 56ch; }
+.contact .flywheel { right: auto; left: -340px; top: auto; bottom: -300px; animation-direction: reverse; }
+
+/* ---------- footer ---------- */
+.site-footer { padding-block: var(--space-8) var(--space-7); font-size: .95rem; color: var(--ink-soft); }
+.footer-grid { display: grid; gap: var(--space-6); }
+.site-footer .wordmark { color: var(--ink); }
+.site-footer .wordmark-text span { color: var(--brand); }
+.footer-col p + p { margin-top: var(--space-2); }
+.footer-links { display: flex; flex-wrap: wrap; gap: 0 var(--space-5); }
+.footer-links a, .footer-col a {
+  display: inline-flex; align-items: center; min-height: 44px; text-decoration: none; color: var(--ink); font-weight: 600;
+}
+.footer-links a { min-width: 44px; }
+.footer-links a:hover, .footer-col a:hover { color: var(--brand); }
+.legal { padding-top: var(--space-5); border-top: 1px solid var(--line); font-family: var(--font-mono); font-weight: 500; font-size: var(--step--1); }
+
+/* ---------- mobile action bar ---------- */
+.action-bar {
+  position: fixed; left: 0; right: 0; bottom: 0; z-index: 60;
+  display: grid; grid-template-columns: repeat(3, 1fr);
+  background: var(--oil); border-top: 1px solid var(--line-oil);
+  padding-bottom: env(safe-area-inset-bottom);
+}
+.action-bar a {
+  display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 3px;
+  min-height: var(--bar-h); color: var(--on-oil); text-decoration: none; font-weight: 600; font-size: .9375rem;
+}
+.action-bar a + a { border-left: 1px solid var(--line-oil); }
+.action-bar a:first-child { background: var(--brand); color: var(--brand-ink); }
+body.no-scroll .action-bar { display: none; }
+
+/* ---------- reveal ---------- */
+.js .reveal { opacity: 0; transform: translateY(16px); transition: opacity var(--dur-3) var(--ease), transform var(--dur-3) var(--ease); }
+.js .reveal.is-in { opacity: 1; transform: none; }
+
+/* ---------- ≥ 640 ---------- */
+@media (min-width: 640px) {
+  .flywheel { width: 720px; height: 720px; right: -340px; top: -160px; }
+  .facts { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--space-5); border-top: 0; }
+  .facts li { flex-direction: column; gap: var(--space-3); border-bottom: 0; border-top: 2px solid var(--ink); }
+  .hero-figure img { aspect-ratio: 16 / 10; }
+}
+
+/* ---------- ≥ 768 : header carries the CTA, bar disappears ---------- */
+@media (min-width: 768px) {
+  body { padding-bottom: 0; }
+  .action-bar { display: none; }
+  .header-cta { display: inline-flex; }
+}
+
+/* ---------- ≥ 960 ---------- */
+@media (min-width: 960px) {
+  :root { --header-h: 72px; }
+  .burger { display: none; }
+  .nav {
+    position: static; z-index: auto; flex-direction: row; padding: 0; background: none; overflow: visible;
+    opacity: 1; visibility: visible; transform: none; transition: none;
+  }
+  .nav-list { display: flex; gap: var(--space-1); }
+  .nav-list a {
+    min-height: 44px; padding: 0 var(--space-3); align-items: center; border: 0; border-radius: var(--r-1);
+    font-family: var(--font-text); font-stretch: 100%; font-weight: 600; font-size: .95rem; letter-spacing: 0;
+  }
+  .nav-list a:hover { background: rgba(242, 238, 231, .07); }
+  .nav-list .n, .nav-extra { display: none; }
+
+  .hero { display: grid; align-items: center; min-height: min(calc(100svh - var(--header-h)), 900px); padding-block: var(--space-7); }
+  .hero-grid { grid-template-columns: minmax(0, 7fr) minmax(0, 5fr); gap: var(--space-8); }
+  .hero-lead { font-size: var(--step-1); line-height: 1.55; }
+  .hero-cta .btn { flex: 0 0 auto; padding: 0 22px; gap: 10px; font-size: 1rem; }
+  .hero-figure img { aspect-ratio: 4 / 5; object-position: 14% 50%; }
+  .flywheel { width: 900px; height: 900px; right: -260px; top: 50%; margin-top: -450px; }
+  .contact .flywheel { left: auto; right: -380px; top: auto; bottom: -420px; margin-top: 0; }
+
+  .proof-head { grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); align-items: end; column-gap: var(--space-8); }
+  .proof-head .label { grid-column: 1 / -1; }
+  .score { margin-top: 0; }
+
+  .atelier-grid {
+    grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); column-gap: var(--space-9); row-gap: var(--space-7);
+    grid-template-areas: "photo head" "photo steps"; align-items: start;
+  }
+  .step { grid-template-columns: 4rem minmax(0, 1fr); }
+  .atelier-photo { position: sticky; top: calc(var(--header-h) + var(--space-5)); }
+  .since { grid-template-columns: auto minmax(0, 1fr); column-gap: var(--space-8); align-items: end; }
+  .since .facts { grid-column: 1 / -1; }
+
+  .visit-grid { grid-template-columns: minmax(0, 5fr) minmax(0, 6fr); gap: var(--space-9); align-items: start; }
+  .access { padding-top: var(--space-2); }
+  .map { aspect-ratio: 5 / 4; }
+
+  .contact-grid { display: grid; grid-template-columns: minmax(0, 7fr) minmax(0, 5fr); column-gap: var(--space-8); align-items: end; }
+  .contact-grid > .contact-main { grid-column: 1; }
+  .contact-side { grid-column: 2; padding-bottom: 6px; }
+  .contact-actions { flex-direction: column; margin-top: 0; }
+  .contact-actions .btn { flex: 0 0 auto; }
+
+  .footer-grid { grid-template-columns: 1.6fr 1fr auto; align-items: start; column-gap: var(--space-8); }
+  .footer-links { flex-direction: column; align-items: flex-start; }
+  .footer-links a { min-height: 36px; }
+  .legal { grid-column: 1 / -1; }
+}
+
+@media (min-width: 1200px) {
+  .hero h1 { letter-spacing: -0.035em; }
+}
+
+@media (hover: hover) {
+  .btn-line:hover, .chip:hover { background: rgba(242, 238, 231, .06); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after { animation: none !important; transition: none !important; }
+  .js .reveal { opacity: 1; transform: none; }
+}
+</style>
+<!--sf:preview--><meta name="robots" content="noindex, nofollow"><!--/sf:preview-->
+<!--sf:og--><meta property="og:image" content="https://dauphine-moto-grenoble.aymenjallouli.dev/og.jpg"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><meta property="og:url" content="https://dauphine-moto-grenoble.aymenjallouli.dev/"><meta name="twitter:card" content="summary_large_image"><meta name="twitter:image" content="https://dauphine-moto-grenoble.aymenjallouli.dev/og.jpg"><!--/sf:og-->
+</head>
+<body id="top">
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+  <symbol id="i-phone" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.8 19.8 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.12 4.18 2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></symbol>
+  <symbol id="i-sms" viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/><path d="M8 9h8M8 13h5"/></symbol>
+  <symbol id="i-route" viewBox="0 0 24 24"><path d="M3 11 22 2l-9 19-2-8-8-2z"/></symbol>
+  <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></symbol>
+  <symbol id="i-ext" viewBox="0 0 24 24"><path d="M7 17 17 7M8 7h9v9"/></symbol>
+  <symbol id="i-star" viewBox="0 0 24 24"><path fill="currentColor" stroke="none" d="m12 2.5 2.94 5.96 6.56.95-4.75 4.63 1.12 6.54L12 17.5l-5.87 3.08 1.12-6.54L2.5 9.41l6.56-.95z"/></symbol>
+  <symbol id="i-cal" viewBox="0 0 24 24"><rect x="3" y="4.5" width="18" height="17" rx="2"/><path d="M8 2.5v4M16 2.5v4M3 10h18M8 15h3"/></symbol>
+  <symbol id="i-card" viewBox="0 0 24 24"><rect x="2.5" y="5" width="19" height="14" rx="2"/><path d="M2.5 10h19M6.5 15h4"/></symbol>
+  <symbol id="i-access" viewBox="0 0 24 24"><circle cx="16" cy="4" r="1.5"/><path d="m18 19 1-7-6 1M5 8l3-3 5.5 3-2.36 3.5M4.24 14.5a5 5 0 0 0 6.88 6M13.76 17.5a5 5 0 0 0-6.88-6"/></symbol>
+  <symbol id="i-menu" viewBox="0 0 24 24"><path d="M4 7h16M4 12h16M4 17h10"/></symbol>
+  <symbol id="i-close" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6 6 18"/></symbol>
+  <symbol id="i-fly" viewBox="0 0 600 600">
+    <g fill="none" stroke="currentColor" stroke-width="1.5">
+      <circle cx="300" cy="300" r="292"/>
+      <circle cx="300" cy="300" r="268" stroke-width="16" stroke-dasharray="2 21.387"/>
+      <circle cx="300" cy="300" r="236"/>
+      <circle cx="300" cy="300" r="196"/>
+      <circle cx="450" cy="300" r="24"/><circle cx="406.07" cy="406.07" r="24"/>
+      <circle cx="300" cy="450" r="24"/><circle cx="193.93" cy="406.07" r="24"/>
+      <circle cx="150" cy="300" r="24"/><circle cx="193.93" cy="193.93" r="24"/>
+      <circle cx="300" cy="150" r="24"/><circle cx="406.07" cy="193.93" r="24"/>
+      <circle cx="300" cy="300" r="92"/>
+      <path d="M342 300 321 336.37h-42L258 300l21-36.37h42z"/>
+      <circle cx="300" cy="300" r="18"/>
+    </g>
+    <circle cx="300" cy="300" r="252" fill="none" stroke="#EE7445" stroke-width="3" stroke-linecap="round" stroke-dasharray="190 1393.4" opacity=".75"/>
+    <path d="M291 2h18l-9 16z" fill="#E9B949" opacity=".8"/>
+  </symbol>
+</svg>
+
+<a class="skip" href="#contenu">Aller au contenu</a>
+
+<header class="site-header">
+  <div class="container header-inner">
+    <a class="wordmark" href="#top" aria-label="Dauphiné Moto, haut de page">
+      <svg class="nut" viewBox="0 0 32 32" aria-hidden="true" focusable="false">
+        <path d="M16 1.5 28.56 8.75v14.5L16 30.5 3.44 23.25V8.75z" fill="#B4441A"/>
+        <circle cx="16" cy="16" r="9" fill="none" stroke="#EE7445" stroke-width="1.5"/>
+        <circle cx="16" cy="16" r="5.5" fill="#161310"/>
+      </svg>
+      <span class="wordmark-text">Dauphiné <span>Moto</span></span>
+    </a>
+    <nav class="nav" id="nav" aria-label="Navigation principale">
+      <ul class="nav-list">
+        <li><a href="#avis"><span class="n">01</span>Avis</a></li>
+        <li><a href="#atelier"><span class="n">02</span>L’atelier</a></li>
+        <li><a href="#horaires"><span class="n">03</span>Horaires &amp; accès</a></li>
+        <li><a href="#contact"><span class="n">04</span>Contact</a></li>
+      </ul>
+      <div class="nav-extra">
+        <p>Rue de la Sûre, 38600 Sassenage<br>Sur rendez-vous, du lundi au samedi</p>
+        <a class="btn btn-brand" href="tel:+33609682495"><svg class="ic" aria-hidden="true"><use href="#i-phone"/></svg>Appeler le 06 09 68 24 95</a>
+      </div>
+    </nav>
+    <a class="btn btn-brand header-cta" href="tel:+33609682495"><svg class="ic" aria-hidden="true"><use href="#i-phone"/></svg>06 09 68 24 95</a>
+    <button class="burger" type="button" aria-expanded="false" aria-controls="nav" aria-label="Ouvrir le menu">
+      <svg class="ic i-menu" aria-hidden="true"><use href="#i-menu"/></svg>
+      <svg class="ic i-close" aria-hidden="true"><use href="#i-close"/></svg>
+    </button>
+  </div>
+</header>
+
+<main id="contenu">
+
+  <section class="hero" aria-labelledby="hero-title">
+    <svg class="flywheel" viewBox="0 0 600 600" aria-hidden="true" focusable="false"><use href="#i-fly"/></svg>
+    <div class="container hero-grid">
+      <div class="hero-copy">
+        <p class="eyebrow">Réparation moto · Sassenage</p>
+        <h1 id="hero-title">Un garage moto <em>comme on n’en fait plus.</em></h1>
+        <p class="hero-lead">Diagnostic, réparation et entretien moto à Sassenage, près de Grenoble, depuis 2001. <strong>On cherche la panne, on vous montre le défaut, puis on répare.</strong></p>
+        <div class="hero-meta">
+          <a class="chip" href="https://www.google.com/maps/place/?q=place_id:ChIJOzAgKqXzikcRYdwqapalAeI" target="_blank" rel="noopener" aria-label="Note de 5,0 sur 5, 15 avis Google (ouvre Google Maps)">
+            <svg class="ic star" aria-hidden="true"><use href="#i-star"/></svg>5,0<span class="sep">·</span>15 avis Google
+          </a>
+          <p class="status" data-status hidden></p>
+        </div>
+        <div class="hero-cta">
+          <a class="btn btn-brand" href="tel:+33609682495"><svg class="ic" aria-hidden="true"><use href="#i-phone"/></svg>Appeler l’atelier</a>
+          <a class="btn btn-line" href="https://www.google.com/maps/dir/?api=1&amp;destination=Dauphin%C3%A9%20Moto%2C%20Rue%20de%20la%20S%C3%BBre%2C%2038600%20Sassenage" target="_blank" rel="noopener"><svg class="ic" aria-hidden="true"><use href="#i-route"/></svg>Itinéraire</a>
+        </div>
+        <p class="hero-note">Sur rendez-vous · du lundi au samedi</p>
+      </div>
+      <figure class="hero-figure">
+        <div class="frame">
+          <img src="assets/photos/photo-01.jpg" width="1600" height="1200" fetchpriority="high"
+               alt="Les mains du mécanicien sur un moteur déposé, à l’établi de l’atelier Dauphiné Moto">
+        </div>
+        <figcaption>À l’établi, rue de la Sûre — Sassenage</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <section class="proof" id="avis" aria-labelledby="avis-title">
+    <div class="container proof-head">
+      <p class="label"><span><b>01</b> — Avis Google</span></p>
+      <div class="score reveal">
+        <p class="score-num" aria-hidden="true">5,0</p>
+        <div class="score-side">
+          <span class="stars" role="img" aria-label="5 étoiles sur 5">
+            <svg class="ic" aria-hidden="true"><use href="#i-star"/></svg><svg class="ic" aria-hidden="true"><use href="#i-star"/></svg><svg class="ic" aria-hidden="true"><use href="#i-star"/></svg><svg class="ic" aria-hidden="true"><use href="#i-star"/></svg><svg class="ic" aria-hidden="true"><use href="#i-star"/></svg>
+          </span>
+          <p>Note moyenne de <strong>5,0 sur 5</strong><br>sur <strong>15 avis</strong> Google</p>
+        </div>
+      </div>
+      <div class="reveal">
+        <h2 id="avis-title">« Les avis s’avèrent vrais. »</h2>
+        <p class="proof-intro">C’est <cite>Andr S.</cite> qui l’écrit, après une première visite. Ce qui revient d’un avis à l’autre&nbsp;: l’accueil, l’honnêteté, et un mécano qui sait diagnostiquer.</p>
+      </div>
+    </div>
+
+    <div class="rail" role="region" aria-label="Avis Google, faire défiler horizontalement" tabindex="0">
+      <ul class="rail-track">
+        <li class="review">
+          <span class="stars" role="img" aria-label="5 étoiles sur 5"><svg class="ic" aria-hidden="true"><use href="#i-star"/></svg><svg class="ic" aria-hidden="true"><use href="#i-star"/></svg><svg class="ic" aria-hidden="true"><use href="#i-star"/></svg><svg class="ic" aria-hidden="true"><use href="#i-star"/></svg><svg class="ic" aria-hidden="true"><use href="#i-star"/></svg></span>
+          <blockquote><p>Garage authentique, le mécano est très accueillant, aux petits soins pour ses clients. Prend le temps d’expliquer et de montrer les défauts. Très arrangeant et prise de RDV RAPIDE. professionnalisme 5* …</p></blockquote>
+          <p class="review-by"><span class="author">Kesia P.</span><span class="date">juillet 2023</span></p>
+        </li>
+        <li class="review">
+          <span class="stars" role="img" aria-label="5 étoiles sur 5"><svg class="ic" aria-hidden="true"><use href="#i-star"/></svg><svg class="ic" aria-hidden="true"><use href="#i-star"/></svg><svg class="ic" aria-hidden="true"><use href="#i-star"/></svg><svg class="ic" aria-hidden="true"><use href="#i-star"/></svg><svg class="ic" aria-hidden="true"><use href="#i-star"/></svg></span>
+          <blockquote><p>… Des professionnels comme on n’en fait plus, qui savent réparer et diagnostiquer.</p></blockquote>
+          <p class="review-by"><span class="author">Younès M.</span><span class="date">août 2025</span></p>
+        </li>
+        <li class="review">
+          <span class="stars" role="img" aria-label="5 étoiles sur 5"><svg class="ic" aria-hidden="true"><use href="#i-star"/></svg><svg class="ic" aria-hidden="true"><use href="#i-star"/></svg><svg class="ic" aria-hidden="true"><use href="#i-star"/></svg><svg class="ic" aria-hidden="true"><use href="#i-star"/></svg><svg class="ic" aria-hidden="true"><use href="#i-star"/></svg></span>
+          <blockquote><p>Des conseils plus que précieux du professionalisme de l'expérience de l'honnêteté j'y retournerais avec plaisir</p></blockquote>
+          <p class="review-by"><span class="author">Mehdi S.</span><span class="date">avril 2026</span></p>
+        </li>
+        <li class="review">
+          <span class="stars" role="img" aria-label="5 étoiles sur 5"><svg class="ic" aria-hidden="true"><use href="#i-star"/></svg><svg class="ic" aria-hidden="true"><use href="#i-star"/></svg><svg class="ic" aria-hidden="true"><use href="#i-star"/></svg><svg class="ic" aria-hidden="true"><use href="#i-star"/></svg><svg class="ic" aria-hidden="true"><use href="#i-star"/></svg></span>
+          <blockquote><p>C'est pas la peine d'aller chercher ailleurs, c'est là que cela se passe. Ta moto te remerciera d'être passer chez eux. Incontournable. …</p></blockquote>
+          <p class="review-by"><span class="author">Reginald P.</span><span class="date">octobre 2022</span></p>
+        </li>
+        <li class="review">
+          <span class="stars" role="img" aria-label="5 étoiles sur 5"><svg class="ic" aria-hidden="true"><use href="#i-star"/></svg><svg class="ic" aria-hidden="true"><use href="#i-star"/></svg><svg class="ic" aria-hidden="true"><use href="#i-star"/></svg><svg class="ic" aria-hidden="true"><use href="#i-star"/></svg><svg class="ic" aria-hidden="true"><use href="#i-star"/></svg></span>
+          <blockquote><p>Première visite, extrêmement agréable. Les avis s'avèrent vrais. …</p></blockquote>
+          <p class="review-by"><span class="author">Andr S.</span><span class="date">septembre 2023</span></p>
+        </li>
+      </ul>
+    </div>
+
+    <div class="container proof-foot">
+      <a class="link-arrow" href="https://www.google.com/maps/place/?q=place_id:ChIJOzAgKqXzikcRYdwqapalAeI" target="_blank" rel="noopener">Voir les 15 avis sur Google<svg class="ic" aria-hidden="true"><use href="#i-ext"/></svg></a>
+      <div class="rail-nav">
+        <button class="rail-btn" type="button" data-dir="-1" aria-label="Avis précédent"><svg class="ic" aria-hidden="true"><use href="#i-arrow"/></svg></button>
+        <button class="rail-btn" type="button" data-dir="1" aria-label="Avis suivant"><svg class="ic" aria-hidden="true"><use href="#i-arrow"/></svg></button>
+      </div>
+    </div>
+  </section>
+
+  <section class="atelier" id="atelier" aria-labelledby="atelier-title">
+    <div class="container atelier-grid">
+      <div class="atelier-head reveal">
+        <p class="label"><span><b>02</b> — L’atelier</span></p>
+        <h2 id="atelier-title">Le diagnostic d’abord. La clé ensuite.</h2>
+        <p class="atelier-lead">Dauphiné Moto est un atelier de mécanique moto, rue de la Sûre à Sassenage. On y vient pour une panne qu’on ne s’explique pas, un entretien à faire, ou un avis franc sur sa moto.</p>
+      </div>
+
+      <figure class="atelier-photo reveal">
+        <img src="assets/photos/photo-02.jpg" width="1200" height="1600" loading="lazy" decoding="async"
+             alt="Moteur ouvert sur l’établi, volant magnétique apparent, devant le mur d’outils de l’atelier">
+        <figcaption>Moteur ouvert, mur d’outils, lumière de l’atelier.</figcaption>
+      </figure>
+
+      <ol class="steps">
+        <li class="step reveal">
+          <span class="step-n">01</span>
+          <div>
+            <h3>Diagnostic</h3>
+            <p>Un bruit, un voyant, une moto qui ne démarre plus&nbsp;: on cherche d’où vient la panne.</p>
+            <blockquote><p>« … qui savent réparer et diagnostiquer. »</p><cite>Younès M., avis Google</cite></blockquote>
+          </div>
+        </li>
+        <li class="step reveal">
+          <span class="step-n">02</span>
+          <div>
+            <h3>Explications</h3>
+            <p>Le défaut vous est expliqué, et montré sur la moto.</p>
+            <blockquote><p>« Prend le temps d’expliquer et de montrer les défauts. »</p><cite>Kesia P., avis Google</cite></blockquote>
+          </div>
+        </li>
+        <li class="step reveal">
+          <span class="step-n">03</span>
+          <div>
+            <h3>Réparation et entretien</h3>
+            <p>La mécanique se fait à l’atelier, sur rendez-vous, pris par téléphone ou par SMS.</p>
+          </div>
+        </li>
+        <li class="step reveal">
+          <span class="step-n">04</span>
+          <div>
+            <h3>Conseils</h3>
+            <p>Un avis franc, qui s’appuie sur l’expérience.</p>
+            <blockquote><p>« Des conseils plus que précieux&nbsp;… »</p><cite>Mehdi S., avis Google</cite></blockquote>
+          </div>
+        </li>
+      </ol>
+    </div>
+
+    <div class="container since">
+      <p class="since-year reveal" aria-hidden="true">2001</p>
+      <div class="since-text reveal">
+        <h3>Un atelier indépendant, rue de la Sûre.</h3>
+        <p>Dauphiné Motos est immatriculée à Sassenage depuis le 31&nbsp;mars&nbsp;2001. Une entreprise individuelle, pas une enseigne&nbsp;: « Garage authentique », résume un avis.</p>
+      </div>
+      <ul class="facts reveal">
+        <li><svg class="ic" aria-hidden="true"><use href="#i-cal"/></svg><div><strong>Sur rendez-vous</strong><span>Rendez-vous obligatoire&nbsp;: appelez ou envoyez un SMS avant de passer.</span></div></li>
+        <li><svg class="ic" aria-hidden="true"><use href="#i-card"/></svg><div><strong>Carte bancaire acceptée</strong><span>Règlement par carte à l’atelier.</span></div></li>
+        <li><svg class="ic" aria-hidden="true"><use href="#i-access"/></svg><div><strong>Accessible en fauteuil roulant</strong><span>Entrée et parking adaptés.</span></div></li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="visit" id="horaires" aria-labelledby="horaires-title">
+    <div class="container visit-grid">
+      <div class="hours-block reveal">
+        <p class="label"><span><b>03</b> — Horaires &amp; accès</span></p>
+        <h2 id="horaires-title">Six jours sur sept, sur rendez-vous.</h2>
+        <p class="status" data-status hidden></p>
+        <table class="hours">
+          <caption class="sr-only">Horaires d’ouverture de l’atelier Dauphiné Moto</caption>
+          <thead><tr><th scope="col">Jour</th><th scope="col">Matin</th><th scope="col">Après-midi</th></tr></thead>
+          <tbody>
+            <tr data-day="lundi"><th scope="row">Lundi</th><td>8h – 12h</td><td>14h – 19h</td></tr>
+            <tr data-day="mardi"><th scope="row">Mardi</th><td>8h – 12h</td><td>14h – 19h</td></tr>
+            <tr data-day="mercredi"><th scope="row">Mercredi</th><td>8h – 12h</td><td>14h – 19h</td></tr>
+            <tr data-day="jeudi"><th scope="row">Jeudi</th><td>8h – 12h</td><td>14h – 19h</td></tr>
+            <tr data-day="vendredi"><th scope="row">Vendredi</th><td>8h – 12h</td><td>14h – 19h</td></tr>
+            <tr data-day="samedi"><th scope="row">Samedi</th><td>9h – 12h</td><td>14h – 19h</td></tr>
+            <tr data-day="dimanche"><th scope="row">Dimanche</th><td class="closed" colspan="2">Fermé</td></tr>
+          </tbody>
+        </table>
+        <p class="hours-note">Pause de 12h à 14h, fermé le dimanche. Le rendez-vous est obligatoire&nbsp;: un appel ou un SMS avant de passer.</p>
+      </div>
+
+      <div class="access reveal">
+        <div class="map">
+          <a class="map-fallback" href="https://www.google.com/maps/place/?q=place_id:ChIJOzAgKqXzikcRYdwqapalAeI" target="_blank" rel="noopener">Ouvrir la carte dans Google Maps</a>
+          <iframe src="https://www.google.com/maps?q=Dauphin%C3%A9%20Moto%2C%20Rue%20de%20la%20S%C3%BBre%2C%2038600%20Sassenage&amp;output=embed"
+                  title="Carte : Dauphiné Moto, rue de la Sûre à Sassenage" loading="lazy"
+                  referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe>
+        </div>
+        <address>
+          <strong>Dauphiné Moto</strong><br>
+          Rue de la Sûre<br>
+          38600 Sassenage
+        </address>
+        <div class="access-actions">
+          <a class="btn btn-brand" href="https://www.google.com/maps/dir/?api=1&amp;destination=Dauphin%C3%A9%20Moto%2C%20Rue%20de%20la%20S%C3%BBre%2C%2038600%20Sassenage" target="_blank" rel="noopener"><svg class="ic" aria-hidden="true"><use href="#i-route"/></svg>Itinéraire</a>
+          <a class="btn btn-ink" href="https://www.google.com/maps/place/?q=place_id:ChIJOzAgKqXzikcRYdwqapalAeI" target="_blank" rel="noopener">Voir sur Google Maps<svg class="ic" aria-hidden="true"><use href="#i-ext"/></svg></a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="contact" id="contact" aria-labelledby="contact-title">
+    <svg class="flywheel" viewBox="0 0 600 600" aria-hidden="true" focusable="false"><use href="#i-fly"/></svg>
+    <div class="container contact-grid">
+      <div class="contact-main reveal">
+        <p class="label"><span><b>04</b> — Contact</span></p>
+        <h2 id="contact-title">Une panne, un bruit, un entretien&nbsp;? <span>Appelez l’atelier.</span></h2>
+        <a class="phone-xl" href="tel:+33609682495" aria-label="Appeler le 06 09 68 24 95">06 09 68 24 95</a>
+      </div>
+      <div class="contact-side reveal">
+        <div class="contact-actions">
+          <a class="btn btn-brand" href="tel:+33609682495"><svg class="ic" aria-hidden="true"><use href="#i-phone"/></svg>Appeler</a>
+          <a class="btn btn-line" href="sms:+33609682495?&amp;body=Bonjour%2C%20je%20souhaiterais%20prendre%20rendez-vous%20%C3%A0%20l%E2%80%99atelier%20pour%20ma%20moto.%20Mod%C3%A8le%20%3A%20"><svg class="ic" aria-hidden="true"><use href="#i-sms"/></svg>Envoyer un SMS</a>
+          <a class="btn btn-line" href="https://www.google.com/maps/dir/?api=1&amp;destination=Dauphin%C3%A9%20Moto%2C%20Rue%20de%20la%20S%C3%BBre%2C%2038600%20Sassenage" target="_blank" rel="noopener"><svg class="ic" aria-hidden="true"><use href="#i-route"/></svg>Itinéraire</a>
+        </div>
+        <p class="contact-note">Rendez-vous obligatoire. Le SMS s’ouvre avec un message prêt&nbsp;: il ne reste qu’à ajouter le modèle de votre moto.</p>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="container footer-grid">
+    <div class="footer-col">
+      <a class="wordmark" href="#top" aria-label="Dauphiné Moto, haut de page">
+        <svg class="nut" viewBox="0 0 32 32" aria-hidden="true" focusable="false">
+          <path d="M16 1.5 28.56 8.75v14.5L16 30.5 3.44 23.25V8.75z" fill="#B4441A"/>
+          <circle cx="16" cy="16" r="9" fill="none" stroke="#EE7445" stroke-width="1.5"/>
+          <circle cx="16" cy="16" r="5.5" fill="#F2EEE7"/>
+        </svg>
+        <span class="wordmark-text">Dauphiné <span>Moto</span></span>
+      </a>
+      <p>Atelier de réparation moto<br>Rue de la Sûre, 38600 Sassenage</p>
+    </div>
+    <div class="footer-col">
+      <p>Sur rendez-vous<br>Lun.–ven. 8h–12h, 14h–19h<br>Sam. 9h–12h, 14h–19h</p>
+      <a href="tel:+33609682495">06 09 68 24 95</a>
+    </div>
+    <nav class="footer-links" aria-label="Pied de page">
+      <a href="#avis">Avis</a>
+      <a href="#atelier">L’atelier</a>
+      <a href="#horaires">Horaires &amp; accès</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <p class="legal">© <span data-year></span> Dauphiné Moto · SIREN 435 233 960</p>
+  </div>
+</footer>
+
+<nav class="action-bar" aria-label="Actions rapides">
+  <a href="tel:+33609682495"><svg class="ic" aria-hidden="true"><use href="#i-phone"/></svg>Appeler</a>
+  <a href="sms:+33609682495?&amp;body=Bonjour%2C%20je%20souhaiterais%20prendre%20rendez-vous%20%C3%A0%20l%E2%80%99atelier%20pour%20ma%20moto.%20Mod%C3%A8le%20%3A%20"><svg class="ic" aria-hidden="true"><use href="#i-sms"/></svg>SMS</a>
+  <a href="https://www.google.com/maps/dir/?api=1&amp;destination=Dauphin%C3%A9%20Moto%2C%20Rue%20de%20la%20S%C3%BBre%2C%2038600%20Sassenage" target="_blank" rel="noopener"><svg class="ic" aria-hidden="true"><use href="#i-route"/></svg>Itinéraire</a>
+</nav>
+
+<script>
+(function () {
+  var d = document;
+  d.documentElement.classList.add('js');
+
+  d.querySelectorAll('[data-year]').forEach(function (el) { el.textContent = new Date().getFullYear(); });
+
+  /* Menu */
+  var burger = d.querySelector('.burger'), nav = d.getElementById('nav');
+  function setMenu(open) {
+    burger.setAttribute('aria-expanded', open ? 'true' : 'false');
+    burger.setAttribute('aria-label', open ? 'Fermer le menu' : 'Ouvrir le menu');
+    nav.classList.toggle('is-open', open);
+    d.body.classList.toggle('no-scroll', open);
+  }
+  burger.addEventListener('click', function () {
+    var open = burger.getAttribute('aria-expanded') !== 'true';
+    setMenu(open);
+    if (open) { var first = nav.querySelector('a'); if (first) first.focus({ preventScroll: true }); }
+  });
+  nav.addEventListener('click', function (e) { if (e.target.closest('a')) setMenu(false); });
+  d.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape' && burger.getAttribute('aria-expanded') === 'true') { setMenu(false); burger.focus(); }
+  });
+  var wide = matchMedia('(min-width: 960px)');
+  (wide.addEventListener ? wide.addEventListener.bind(wide, 'change') : wide.addListener.bind(wide))(function (e) { if (e.matches) setMenu(false); });
+
+  /* Hours: live status + today */
+  var H = {
+    lundi: '08:00–12:00, 14:00–19:00', mardi: '08:00–12:00, 14:00–19:00', mercredi: '08:00–12:00, 14:00–19:00',
+    jeudi: '08:00–12:00, 14:00–19:00', vendredi: '08:00–12:00, 14:00–19:00', samedi: '09:00–12:00, 14:00–19:00',
+    dimanche: 'Fermé'
+  };
+  var DAYS = ['dimanche', 'lundi', 'mardi', 'mercredi', 'jeudi', 'vendredi', 'samedi'];
+  function parse(s) {
+    s = String(s || '').trim();
+    if (!s || /ferm/i.test(s)) return [];
+    if (/24\s*h|24\/24|24 heures/i.test(s)) return [[0, 1440]];
+    return s.split(/\s*[,;]\s*/).map(function (r) {
+      var m = r.match(/(\d{1,2})(?:\s*[:hH.]\s*(\d{2})?)?\s*[–—-]\s*(\d{1,2})(?:\s*[:hH.]\s*(\d{2})?)?/);
+      if (!m) return null;
+      var a = +m[1] * 60 + (+m[2] || 0), b = +m[3] * 60 + (+m[4] || 0);
+      if (b <= a) b += 1440; /* range past midnight */
+      return [a, b];
+    }).filter(Boolean);
+  }
+  var R = DAYS.map(function (k) { return parse(H[k]); });
+  var hasHours = R.some(function (r) { return r.length; });
+  function now() {
+    try {
+      var p = {};
+      new Intl.DateTimeFormat('fr-FR', { timeZone: 'Europe/Paris', weekday: 'long', hour: 'numeric', minute: 'numeric', hourCycle: 'h23' })
+        .formatToParts(new Date()).forEach(function (x) { p[x.type] = x.value; });
+      var di = DAYS.indexOf(String(p.weekday).toLowerCase());
+      if (di > -1) return { d: di, t: (+p.hour % 24) * 60 + (+p.minute) };
+    } catch (e) {}
+    var n = new Date();
+    return { d: n.getDay(), t: n.getHours() * 60 + n.getMinutes() };
+  }
+  function fmt(m) {
+    m = m % 1440;
+    if (m === 0) return 'minuit';
+    var h = Math.floor(m / 60), mm = m % 60;
+    return h + 'h' + (mm ? (mm < 10 ? '0' : '') + mm : '');
+  }
+  function status() {
+    var n = now(), d0 = n.d, t = n.t, i, r;
+    for (i = 0; i < R[d0].length; i++) { r = R[d0][i]; if (t >= r[0] && t < r[1]) return { open: true, until: r[1], d: d0 }; }
+    var prev = R[(d0 + 6) % 7];
+    for (i = 0; i < prev.length; i++) { r = prev[i]; if (r[1] > 1440 && t < r[1] - 1440) return { open: true, until: r[1] - 1440, d: d0 }; }
+    for (var k = 0; k < 8; k++) {
+      var day = (d0 + k) % 7;
+      for (i = 0; i < R[day].length; i++) {
+        if (k > 0 || R[day][i][0] > t) return { open: false, k: k, at: R[day][i][0], name: DAYS[day], d: d0 };
+      }
+    }
+    return { open: false, d: d0 };
+  }
+  function render() {
+    if (!hasHours) return;
+    var s = status(), txt;
+    if (s.open) txt = 'Ouvert maintenant · jusqu’à ' + fmt(s.until);
+    else if (s.at == null) txt = 'Fermé';
+    else if (s.k === 0) txt = 'Fermé · ouvre à ' + fmt(s.at);
+    else if (s.k === 1) txt = 'Fermé · ouvre demain à ' + fmt(s.at);
+    else txt = 'Fermé · ouvre ' + s.name + ' à ' + fmt(s.at);
+    d.querySelectorAll('[data-status]').forEach(function (el) {
+      el.textContent = txt;
+      el.classList.toggle('is-open', !!s.open);
+      el.hidden = false;
+    });
+    d.querySelectorAll('.hours tr[data-day]').forEach(function (tr) {
+      var today = tr.getAttribute('data-day') === DAYS[s.d];
+      tr.classList.toggle('is-today', today);
+      var th = tr.querySelector('th'), tag = th.querySelector('.today-tag');
+      if (today && !tag) { tag = d.createElement('span'); tag.className = 'today-tag'; tag.textContent = 'Aujourd’hui'; th.appendChild(tag); }
+      if (!today && tag) tag.remove();
+    });
+  }
+  render();
+  setInterval(render, 60000);
+
+  /* Review rail */
+  var rail = d.querySelector('.rail'), btns = d.querySelectorAll('.rail-btn');
+  var reduce = matchMedia('(prefers-reduced-motion: reduce)');
+  function step() { var c = rail.querySelector('.review'); return c ? c.getBoundingClientRect().width + 16 : rail.clientWidth * 0.8; }
+  function sync() {
+    var max = rail.scrollWidth - rail.clientWidth - 2;
+    btns[0].disabled = rail.scrollLeft <= 2;
+    btns[1].disabled = rail.scrollLeft >= max;
+  }
+  btns.forEach(function (b) {
+    b.addEventListener('click', function () {
+      rail.scrollBy({ left: +b.getAttribute('data-dir') * step(), behavior: reduce.matches ? 'auto' : 'smooth' });
+    });
+  });
+  rail.addEventListener('scroll', function () { requestAnimationFrame(sync); }, { passive: true });
+  addEventListener('resize', sync);
+  sync();
+
+  /* Reveal on scroll */
+  var els = d.querySelectorAll('.reveal');
+  if ('IntersectionObserver' in window && !reduce.matches) {
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add('is-in'); io.unobserve(e.target); } });
+    }, { rootMargin: '0px 0px -8% 0px', threshold: 0.12 });
+    els.forEach(function (el) { io.observe(el); });
+  } else {
+    els.forEach(function (el) { el.classList.add('is-in'); });
+  }
+})();
+</script>
+<!--sf:preview--><div style="padding:18px 16px;font:13px/1.5 system-ui,-apple-system,Segoe UI,Roboto,sans-serif;text-align:center;background:#0f0f10;color:#a3a3a8">Aperçu réalisé par Aymen Jallouli pour Dauphiné Moto : ce site n'est pas encore le site officiel de l'établissement.</div><!--/sf:preview-->
+<!--sf:track--><script>(function(){try{var q=new URLSearchParams(location.search),r=q.get('r')||sessionStorage.getItem('sf_r');if(!r)return;sessionStorage.setItem('sf_r',r);navigator.sendBeacon("https://track.aymenjallouli.dev/t"+'?r='+encodeURIComponent(r)+'&p='+encodeURIComponent(location.pathname));}catch(e){}})();</script><!--/sf:track-->
+</body>
+</html>
